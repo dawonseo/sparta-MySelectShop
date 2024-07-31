@@ -48,7 +48,7 @@ public class ProductController {
     @PostMapping("/products/{productId}/folder")
     public void addFolder(
             @PathVariable Long productId,
-            @PathVariable Long folderId,
+            @RequestParam Long folderId,
             @AuthenticationPrincipal UserDetailsImpl userDetails
     ) {
         productService.addFolder(productId, folderId, userDetails.getUser());
