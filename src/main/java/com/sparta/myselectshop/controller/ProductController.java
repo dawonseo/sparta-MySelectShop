@@ -44,4 +44,13 @@ public class ProductController {
     public List<ProductResponseDto> getAllProducts() {
         return productService.getAllProducts();
     }
+
+    @PostMapping("/products/{productId}/folder")
+    public void addFolder(
+            @PathVariable Long productId,
+            @PathVariable Long folderId,
+            @AuthenticationPrincipal UserDetailsImpl userDetails
+    ) {
+        productService.addFolder(productId, folderId, userDetails.getUser());
+    }
 }
